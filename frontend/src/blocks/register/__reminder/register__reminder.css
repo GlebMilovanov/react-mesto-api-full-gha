@@ -1,0 +1,13 @@
+.register__reminder {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .register__reminder{
+    margin-top: 20px;
+  }
+}

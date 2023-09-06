@@ -1,0 +1,13 @@
+.burger-menu {
+  width: 24px;
+  height: 21px;
+  background-image: url(../../images/burger-menu.svg);
+  cursor: pointer;
+  transition: all 0.3s linear;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.burger-menu:hover {
+  opacity: 0.6;
+}

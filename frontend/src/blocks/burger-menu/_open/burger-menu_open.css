@@ -1,0 +1,5 @@
+.burger-menu_open {
+  background-image: url(../../../images/close-button.svg);
+  width: 20px;
+  height: 20px;
+}
