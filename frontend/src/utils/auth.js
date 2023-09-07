@@ -1,4 +1,4 @@
-const BASE_URL = 'https://gleb.nomoredomainsicu.ru';
+const BASE_URL = 'https://api.gleb.nomoredomainsicu.ru';
 
 const _getResponseData = (res) => {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
