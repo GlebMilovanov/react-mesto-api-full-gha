@@ -68,8 +68,24 @@ const login = async (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
         sameSite: true,
+        secure: true,
       })
       .send({ message: 'Успешная авторизация' });
+  } catch (err) {
+    return next(err);
+  }
+};
+
+// logout
+const logout = (req, res, next) => {
+  try {
+    return res
+      .clearCookie('jwt', {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'strict',
+      })
+      .send({ message: 'Вы успешно вышли из системы' });
   } catch (err) {
     return next(err);
   }
@@ -96,6 +112,7 @@ const createUser = async (req, res, next) => {
 module.exports = {
   getUsers,
   login,
+  logout,
   createUser,
   updateUserInfo,
   updateUserAvatar,

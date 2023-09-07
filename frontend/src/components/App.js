@@ -13,7 +13,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext'
 import { Login } from './Login'
 import { Register } from './Register'
 import { ProtectedRoute } from './ProtectedRoute'
-import { login, registration, checkToken } from '../utils/auth'
+import { login, registration, checkToken, logout } from '../utils/auth'
 import { InfoTooltip } from './InfoTooltip'
 
 function App() {
@@ -218,7 +218,7 @@ function App() {
   const handleLogin = async (email, password) => {
     setIsLoading(true)
     try {
-      const data = await login(email, password)
+      await login(email, password)
       setLoggedIn(true)
       navigate(paths.main, { replace: true })
     } catch (err) {
@@ -228,16 +228,23 @@ function App() {
     }
   }
 
-  const handleSignOut = () => {
-    setLoggedIn(false)
-    setCurrentUser(null)
-    setCards([])
+  const handleLogOut = async () => {
+    try {
+      await logout()
+      setLoggedIn(false)
+      setCurrentUser(null)
+      setCards([])
+      navigate(paths.login, { replace: true })
+    } catch (err) {
+      console.error(err)
+    }
   }
+
 
   return (
     <div className='page'>
       <CurrentUserContext.Provider value={currentUser}>
-        <Header paths={paths} onHandleSignOut={handleSignOut} />
+        <Header paths={paths} onHandleSignOut={handleLogOut} />
         <Routes>
           <Route path={paths.login} element={<Login onLogin={handleLogin} isLoading={isLoading} />} />
           <Route path={paths.register} element={<Register onRegister={handleRegister} isLoading={isLoading} />} />

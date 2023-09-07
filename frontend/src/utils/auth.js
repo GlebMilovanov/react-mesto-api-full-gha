@@ -32,6 +32,17 @@ export const login = async (email, password) => {
   return _getResponseData(response);
 };
 
+export const logout = async () => {
+  const response = await fetch(`${BASE_URL}/logout`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+  });
+  return _getResponseData(response);
+};
+
 export const checkToken = async () => {
   const response = await fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
