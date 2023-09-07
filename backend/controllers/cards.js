@@ -11,7 +11,7 @@ const { handleCardLikes } = require('../utils/decorators/cardDecorators');
 module.exports.getCards = async (req, res, next) => {
   try {
     const cards = await Card.find({});
-    return res.status(HTTP_STATUS_OK).send({ data: cards });
+    return res.status(HTTP_STATUS_OK).send(cards);
   } catch (err) {
     return next(err);
   }
@@ -22,7 +22,7 @@ module.exports.createCard = async (req, res, next) => {
   try {
     const { name, link } = req.body;
     const card = await Card.create({ name, link, owner: req.user._id });
-    return res.status(HTTP_STATUS_CREATED).send({ data: card });
+    return res.status(HTTP_STATUS_CREATED).send(card);
   } catch (err) {
     if (err instanceof mongoose.Error.ValidationError) {
       return next(new ValidationError('Переданы некорректные данные'));
@@ -43,7 +43,7 @@ module.exports.deleteCardById = async (req, res, next) => {
     }
 
     await Card.findByIdAndDelete(card._id);
-    return res.status(HTTP_STATUS_OK).send({ data: card });
+    return res.status(HTTP_STATUS_OK).send(card);
   } catch (err) {
     if (err instanceof mongoose.Error.CastError) {
       return next(new ValidationError('Неверный ID'));

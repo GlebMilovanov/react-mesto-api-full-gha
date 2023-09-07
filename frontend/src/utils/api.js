@@ -1,11 +1,9 @@
-import { apiURL, apiGroupId, apiToken } from './constants';
+import { apiURL } from './constants';
 
 class Api {
-  constructor(url, groupId, token) {
+  constructor(url) {
     this._url = url;
-    this._groupId = groupId;
     this._headers = {
-      authorization: token,
       'Content-Type': 'application/json',
     };
   }
@@ -26,8 +24,8 @@ class Api {
 
   /* get user info  from server */
   async getUserInfo() {
-    const response = await fetch(`${this._url}${this._groupId}users/me`, {
-      headers: this._headers,
+    const response = await fetch(`${this._url}users/me`, {
+      credentials: 'include',
     });
 
     return this._getResponseData(response);
@@ -35,8 +33,8 @@ class Api {
 
   /* get cards info  from server */
   async getCardsInfo() {
-    const response = await fetch(`${this._url}${this._groupId}cards`, {
-      headers: this._headers,
+    const response = await fetch(`${this._url}cards`, {
+      credentials: 'include',
     });
 
     return this._getResponseData(response);
@@ -44,8 +42,9 @@ class Api {
 
   /* send user info to server */
   async sendUserInfo({ name, about }) {
-    const response = await fetch(`${this._url}${this._groupId}users/me`, {
+    const response = await fetch(`${this._url}users/me`, {
       method: 'PATCH',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         name,
@@ -58,8 +57,9 @@ class Api {
 
   /* create new card */
   async createCard({ name, link }) {
-    const response = await fetch(`${this._url}${this._groupId}cards`, {
+    const response = await fetch(`${this._url}cards`, {
       method: 'POST',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         name,
@@ -73,9 +73,10 @@ class Api {
   /* delete your card */
   async deleteCard(cardId) {
     const response = await fetch(
-      `${this._url}${this._groupId}cards/${cardId}`,
+      `${this._url}cards/${cardId}`,
       {
         method: 'DELETE',
+        credentials: 'include',
         headers: this._headers,
       }
     );
@@ -86,9 +87,10 @@ class Api {
   /* like card */
   async likeCard(cardId) {
     const response = await fetch(
-      `${this._url}${this._groupId}cards/${cardId}/likes`,
+      `${this._url}cards/${cardId}/likes`,
       {
         method: 'PUT',
+        credentials: 'include',
         headers: this._headers,
       }
     );
@@ -99,9 +101,10 @@ class Api {
   /* remove like */
   async removeCardLike(cardId) {
     const response = await fetch(
-      `${this._url}${this._groupId}cards/${cardId}/likes`,
+      `${this._url}cards/${cardId}/likes`,
       {
         method: 'DELETE',
+        credentials: 'include',
         headers: this._headers,
       }
     );
@@ -114,9 +117,10 @@ class Api {
   async changeLikeCardStatus(cardId, isLiked) {
     const method = isLiked ? 'PUT' : 'DELETE';
     const response = await fetch(
-      `${this._url}${this._groupId}cards/${cardId}/likes`,
+      `${this._url}cards/${cardId}/likes`,
       {
         method: method,
+        credentials: 'include',
         headers: this._headers,
       }
     );
@@ -127,9 +131,10 @@ class Api {
   /* update user photo */
   async updateUserAvatar({ avatar }) {
     const response = await fetch(
-      `${this._url}${this._groupId}users/me/avatar`,
+      `${this._url}users/me/avatar`,
       {
         method: 'PATCH',
+        credentials: 'include',
         headers: this._headers,
         body: JSON.stringify({
           avatar,
@@ -141,4 +146,4 @@ class Api {
   }
 }
 
-export const api = new Api(apiURL, apiGroupId, apiToken);
+export const api = new Api(apiURL);
