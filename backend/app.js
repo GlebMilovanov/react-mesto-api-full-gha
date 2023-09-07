@@ -13,7 +13,7 @@ const { errorHandler } = require('./middlewares/errorHandler');
 
 const app = express();
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001'],
+  origin: 'https://gleb.nomoredomainsicu.ru',
   credentials: true,
 }));
 /* const limiter = rateLimit({
