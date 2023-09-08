@@ -13,10 +13,10 @@ router.get('/crash-test', () => {
 });
 router.post('/signin', validateLogin, login);
 router.post('/signup', validateCreateUser, createUser);
+router.post('/logout', logout);
 
 router.use(auth);
 
-router.post('/logout', logout);
 router.use('/users', usersRoutes);
 router.use('/cards', cardsRoutes);
 
