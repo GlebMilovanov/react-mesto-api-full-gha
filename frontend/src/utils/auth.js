@@ -32,7 +32,7 @@ export const login = async (email, password) => {
   return _getResponseData(response);
 };
 
-export const logout = async () => {
+/* export const logout = async () => {
   const response = await fetch(`${BASE_URL}/logout`, {
     method: 'POST',
     headers: {
@@ -41,7 +41,7 @@ export const logout = async () => {
     credentials: 'include',
   });
   return _getResponseData(response);
-};
+}; */
 
 export const checkToken = async () => {
   const response = await fetch(`${BASE_URL}/users/me`, {
