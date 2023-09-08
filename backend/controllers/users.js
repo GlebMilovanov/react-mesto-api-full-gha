@@ -75,6 +75,20 @@ const login = async (req, res, next) => {
   }
 };
 
+// logout
+const logout = (req, res, next) => {
+  try {
+    return res
+      .clearCookie('jwt', {
+        httpOnly: true,
+        sameSite: 'strict',
+      })
+      .send({ message: 'Вы успешно вышли из системы' });
+  } catch (err) {
+    return next(err);
+  }
+};
+
 // create new user
 const createUser = async (req, res, next) => {
   try {
@@ -96,6 +110,7 @@ const createUser = async (req, res, next) => {
 module.exports = {
   getUsers,
   login,
+  logout,
   createUser,
   updateUserInfo,
   updateUserAvatar,
