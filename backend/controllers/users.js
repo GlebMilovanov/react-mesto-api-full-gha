@@ -76,7 +76,7 @@ const login = async (req, res, next) => {
   }
 };
 
-// logout
+/* // logout
 const logout = (req, res, next) => {
   try {
     return res
@@ -89,7 +89,7 @@ const logout = (req, res, next) => {
   } catch (err) {
     return next(err);
   }
-};
+}; */
 
 // create new user
 const createUser = async (req, res, next) => {
@@ -112,7 +112,7 @@ const createUser = async (req, res, next) => {
 module.exports = {
   getUsers,
   login,
-  logout,
+  /* logout, */
   createUser,
   updateUserInfo,
   updateUserAvatar,

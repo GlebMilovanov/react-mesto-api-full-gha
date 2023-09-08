@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { login, createUser, logout } = require('../controllers/users');
+const { login, createUser /* logout */ } = require('../controllers/users');
 const usersRoutes = require('./users');
 const cardsRoutes = require('./cards');
 const auth = require('../middlewares/auth');
@@ -13,7 +13,7 @@ router.get('/crash-test', () => {
 });
 router.post('/signin', validateLogin, login);
 router.post('/signup', validateCreateUser, createUser);
-router.post('/logout', logout);
+/* router.post('/logout', logout); */
 
 router.use(auth);
 
