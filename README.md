@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP 130.193.37.15
+IP <!-- 130.193.37.15 -->
 
-Frontend https://gleb.nomoredomainsicu.ru/
+Frontend <!-- https://gleb.nomoredomainsicu.ru/ -->
 
-Backend https://api.gleb.nomoredomainsicu.ru/
+Backend <!-- https://api.gleb.nomoredomainsicu.ru/ -->

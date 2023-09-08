@@ -230,7 +230,7 @@ function App() {
 
   const handleLogOut = async () => {
     try {
-      /* await logout() */
+      await logout()
       setLoggedIn(false)
       setCurrentUser(null)
       setCards([])
