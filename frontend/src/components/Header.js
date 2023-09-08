@@ -14,7 +14,6 @@ export const Header = ({ paths, onHandleSignOut }) => {
 
   const toggleBurgerMenu = () => {
     setIsOpen(!isOpen);
-    console.log(isOpen);
   };
 
   useEffect(() => {

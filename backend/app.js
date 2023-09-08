@@ -1,4 +1,4 @@
-/* const rateLimit = require('express-rate-limit'); */
+const rateLimit = require('express-rate-limit');
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -16,18 +16,17 @@ app.use(cors({
   origin: ['https://gleb.nomoredomainsicu.ru', 'https://api.gleb.nomoredomainsicu.ru/'],
   credentials: true,
 }));
-/* const limiter = rateLimit({
+const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
 });
- */
 
 app.use(express.json());
 app.use(helmet());
 app.use(cookieParser());
 
 app.use(requestLogger);
-/* app.use(limiter); */
+app.use(limiter);
 app.use(router);
 app.use(errorLogger);
 app.use(errors());
