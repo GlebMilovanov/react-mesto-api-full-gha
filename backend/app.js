@@ -16,6 +16,7 @@ app.use(cors({
   origin: ['https://gleb.nomoredomainsicu.ru', 'https://api.gleb.nomoredomainsicu.ru/'],
   credentials: true,
 }));
+
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,

@@ -42,7 +42,7 @@ module.exports.deleteCardById = async (req, res, next) => {
       return next(new ForbiddenError('Недостаточно прав для удаления этой карточки'));
     }
 
-    await Card.findByIdAndDelete(card._id);
+    await card.deleteOne();
     return res.status(HTTP_STATUS_OK).send(card);
   } catch (err) {
     if (err instanceof mongoose.Error.CastError) {
